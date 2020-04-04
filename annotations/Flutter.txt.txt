@@ -1,0 +1,218 @@
+Estudo Do Flutter
+
+- Quando queremos executar ações para o nosso aplicativo, ele sempre preci-
+sa estar dentro da chamada do "runApp()". Logo, 'runApp()' será o ponto de
+partida com o FLutter. Por maus que haja a função main() do Dart, o que 
+realmente servirá para mostrar as modificações do Flutter no nosso app é o 
+'runApp()'.
+
+- Como opção de Widget já pronto, temos o "Text()" que permite mostrarmos 
+uma mensagem na tela, como parâmetro o Text() exige o "textDirection" para
+informarmos a direção do texto que estamos escrevendo:
+
+ex: void main() => runApp(Text('Bem vindo', textDitection: Textdirection.lrt))
+
+- A estrutura comum de um projeto construido em Flutter é dada a partir de
+um Widgrt A qualquer que necessariamente pode receber outros Widgets, temos
+o nosso root. Logo abaixo, teríamos um widget B, que por sua vez poderia 
+ter os Widgets C,D e E e assim por diante.
+
+- Em relação ao nosso projeto, poderíamos incluir um novo Column() dentro 
+do argumento children, que permite a adição de um array de widgets(<widgets>[])
+Adicionaremos esse Column() após o ultimo Text() e dentro dele passariamos a 
+mesma estrutura do primeiro Column(), ou seja, um children incluindo um novo 
+widget de texto.
+
+- No catálogo do flutter encontraremos dois conjuntos de widgets muito comuns
+nos aplicativos Android e iOS: Cupertino(iOS-style widgets), cujo estilo remete
+aos produtos da Apple, e o Material Components, cujos componentes são relacio-
+nados ao Material Design da Google.
+
+- Para implementarmos todos os comportamentos que desejamos do Material Compo-
+nents precisaremos de uma estrutura mínima, que é a utulização do "MaterialApp"
+como base da nossa aplicação. Esse widget envolverá todos os outros componentes
+que adicionarmos, e é responsável pelos comportamentos esperados por padrão
+nessa implementação, seja na parte de navegação, transição e assim por diante.
+Sendo assim, envolveremos basicamente todo o nosso código com o 'MaterialApp' 
+que traz consifo diversas configurações que antes eram feitas manualmente serão
+entregues de maneira automatica e nos moldes do Material Design.
+
+- Quando Trabalhamos com o MaterialApp() precisamos sempre indicar qual será a
+primeira tela a ser acessada. Há várias maneiras de fazer essa configuração, 
+mas a mais objetiva é usando a propriedade home, que nos permite indicar qual-
+quer widget como primeira tela.
+
+- Para isso temos a disposição o componente Scaffold(), que nos permitirá im-
+plementarmos toda a estrutura básica do Material Design. Vamos utiliza-lo na 
+propriedade home do nosso MaterialApp().
+
+- Usar o extends Widget na criação de uma classe faz com que ela se torne um 
+widget, mas a herança de Widget é uma classe genérica, indica que queremos 
+criar um widget da mesma forma que temos os widgets "Text(), Card(), Column()"
+e é mais utilizada na criação de widgets de baixo nível.
+
+- Para casos no qual a ideia é utilizar um código que já foi escrito, existem 
+duas referências possíveis: "StatelessWidget" e "StatefulWidget". Essas duas 
+classes herdam de Widget, mas têm o comportamento de emcapsular códigos de Wid-
+gets já prontos. A Diferença entre elas é que a "SatefulWidget" tem a capaci-
+dade de modificar o widget de forma dinâmica a partir de eventos que acontecem
+no aplicativo, enquanto a 'SatelessWidget' não permite esse tipo de modificação.
+
+- O "TextField" é um widget de input de texto e disponibilza da propriedade 
+"decoration" responsavel pelas decorações desse widget. A decoration recebe um
+widget InputDecoration() que, por sua vez, possui propriedades para modificar a
+parte visual desse campo, seja com a labelText, que nos permite exibir um rótu-
+lo por meio de uma stringm ou a hintText, que permite a criação de uma dica
+também por meio de uma string.
+
+- Nos casos em que precisamos modificar um conteúdo de texto no Flutter, usamos
+uma propriedade distinta de cada widget, chamada "style". Essa propriedade re-
+cebe outro widget, TextStyle(), responsável por alterar qualquer caracteristica
+relacionada ao texto como a fontSize que controla o tamanho da fonte.
+
+- O TextField() nos disponibiliza a propriedade keyboardType que espera um tipo
+chamado TextInputType. Essa propriedade possui constantes indicando as possibi-
+lidades de teclado, como number, que é justamente o teclado numerico.
+
+- Para podermos incluir uma margem entre o widget e a tela usaremos o Padding()
+e dentro dele que colocaremos o TextField() como child.
+
+- O RaisedButton() nos disponibiliza a prorpiedade 'onPressed' com a qual conse-
+guimos captar todas as vezes que o clique for acionado. Essa prorpiedade recebe
+uma função callback implementada via expressão lambda. Dentro do escopo dessa 
+função, teremos acesso a todas as vezes que o evento for acionado.
+
+- Para recuperar os campos de texto usaremos a propriedade 'controller', que 
+recebe uma referência 'TextEditingController' a partir da qual conseguiremos 
+extrair esses valores. Criaremos uma instância desse controlador com variáveis
+privadas da classe. 
+
+- O FloatingActionButton() tem um parâmetro obrigatório chamado onPressed, que
+é responsável por eventos de clique, dentro dele irá conter uma função que irá 
+retornar o que deve ser feito quando o botão for clicado.
+
+- No FLutter, temos uma referência destinada a fazer configurações de navegação
+de tela, chamada 'Navigator'. A partir dele, podemos controlar comportamentos
+de entrar em uma tela, voltar para a tela anterior e assim por diante.
+
+- Como queremos entrar numa tela, chamaremos o 'Navigator.push()', um método
+que precisa de dois argumentos: 'context' (do tipo BuildContext) e 'route', que
+representa a rota própria, mas isso é um processo um pouco mais complicado e
+que exige conhecimentos aprofundados do fluter mas, essa ferramenta já nos dis-
+ponibiliza algumas soluções prontas para navegação. É o caso de uma solução 
+propria do Material Design, a 'MaterialPageRoute()' que inclusive nos dá acesso
+a efeitos de transição de tela.
+
+- Essa referência faz a implementação de um Route<T> que recebe um genérico e,
+a partir dela, conseguimos passar algun argumentos de modo a navegarmos para a 
+tela esperada.
+
+- Dentre esses argumentos, precisamos enviar um 'builder' fazendo a implementa-
+ção de uma função callback que receberá o contexto e devolveré um widget, e 
+esse widget é justamente a página para qual navegaremos. Dado que é um callback
+incluiremos uma expressão lambda recebendo um context e em seguida, devolvere-
+mos, com o return, o widget da página que queremos entrar.
+
+- No momento em que utilizamos o push(), temos a capacidade de pegar algum tipo
+de resposta que está sendo enviada nesse evento. Na documentação do push(),
+encontramos que, como retorno, ela tem uma referência de 'Future'.
+
+- O Future é basicamente um callback que permite o acesso a uma possível res-
+posta durante a navegação. Para fazermos esse acesso, precisaremos de outra
+função callback que somente o receberá no momento em que esse retorno acontecer.
+
+- Por exemplo, quando entramos em uma tela, todo o código já foi excutado e não
+temos mais a cesso a ele. Justamente por isso, precisaremos de um comportamento 
+para receber os valores, algo que conseguiremos com o future.then(). Assim, no
+evento do clique em "Confirmar", por exemplo, executaremos outro código que de-
+volverá os valores a esse Future.
+
+- Recapitulando: o Future fica atento às notificações provindas do Navigator. 
+Quando ele recebe essa notificação, entra na execução do then() e passa, no 
+nosso caso, a transferenciaRecebida, com a qual podemos trabalhar da maneira 
+que preferirmos.
+
+- O Navigator.pop() remove a tela da pilha de navegação. Ou seja, o push() adi-
+ciona uma tela à pilha, e o pop() a remove.
+
+- Para solulções em que não sabemos a quantidade de itens que serão mantidos no 
+widget o Column não é apropriado pois, como ele não possui o comportamento de 
+scroll, existe um limite a qual ele pode suportar, apresentando um erro caso 
+esse número seja excedido.
+
+- No catálogo de widgets da documentação do Flutter, encontramos a seção 
+'Scrolling widgets'. Dentre eles, temos o ListView, proprio para comportamento
+de lista. Essa é uma solução ára lidarmos com elementos estaticos, ou seja,
+elementos já pré-definidos e que não terão atualizações dinâmicas. Para conse-
+guirmos uma lista que armazene várias transferências dinamicamente, precisare-
+mos de uma alternativa de implementação do ListView, acessada a partid do 
+ListView.builder().
+
+- Dentro dessa função, teremos que incluir duas prorpiedades: 'itemCount', que
+determina quantos itens aparecerão durante a montagem dinâmica; e 'itemBuilder'
+responsavél por indicar qual será o widget que representará cada um desses itens
+
+- Para conseguir a quantidade de itens passadas para o 'itemCount' precisaremos
+de uma estrutura de dados para pode recuperar esse valor que será o caso de uma
+lista, Ex:. List<Transderencia> _transferencia = List();
+
+- Já na prorpiedade 'itemBuilder' iremos passar uma função callback que recebe-
+rá dois parâmetros, sendo eles o context e um int representando o indice(posi-
+ção de cada elemento), e retorna um widget representando o elemento que quere-
+mos colocar na tela.
+
+- Porém a lista só será representada visualmente se o widget que queremos que 
+seja retornado seja do tipo que permite atualziações dinâmicas, ou seja, 
+'StatefulWidget'.
+
+- Para fazer a modificação de stateless para stateful, é preciso ajustar alguns 
+detalhes, começando pela sobrescrita do build(), responsável por montar a árvo-
+re de widget que queremos representar na classe e que não está presente no 
+'StatefulWidget'. Para criarmos a árvore, teremos acesso a um objeto que repre-
+senta o estado do StatefulWidget a partir do método createState().
+
+- caso não se tenha nenhum State para devolver uma instância, cria-se uma classe
+personalizada cujo o nome em geral é o nome do widget mais o sulfixo "State"
+(Ex:. ListaTransferenciaState). Também teremos que indicar que estamos repre-
+sentando um State com base em uma classe abstrata "State<T>" que recebe um tipo
+genérico de StatefulWidget, no caso a nossa ListaTransferencia. De posse do 
+State, conseguimos implementar a sobrescrita do build() que montará a árvore de
+widgets.
+
+- Quando lidamos com objetos que terão sua assinatura modificada ou algo do 
+tipon os manteremos no State. Porém, se são referências constantes, que não 
+terão o seu valor alterado, elas são mantidas no próprio StatefulWidget e passam
+a ser acessadas por meio de um objeto 'widget'.
+
+- Se tivermos algo estático, que não atualiza os seus campos e não depende de
+conteúdo dinâmico mas mesmo assim quisermos implementar a funcionalidade de 
+scroll, podemos fazer isso por meio do widget 'SingleChildScrollview()'.
+
+-  Quando passamos a trabalhar com um StatefulWidget, aprendemos que o build() 
+sempre é executado quando navegamos ou atualizamos uma página, no nosso caso 
+adicionando uma transferência. Porém, vamos fazer um pequeno ajuste no código, 
+fazendo com que a transferência não seja adicionada assim que o then() for acio-
+nado, mas sim um pouco depois, algo que nos gerará um problema que discutiremos
+adiante.
+
+Para isso, no escopo do callback do then(), usaremos o Future, que nos dá acesso
+a algumas funções relativas a processamentos assíncronos, dentre elas a 
+"delayed()". Nela, podemos passar uma referência de Duration() indicando quanto
+tempo queremos que a execução demore. Nesse caso, usaremos a propriedade 
+seconds e passaremos o valor 1, ou seja, "um segundo".
+
+- Porem é possivel que a atualização não aconteça, isso se deve ao fato de que 
+para atualizarmos conteúdos dentro de um widget que faz parte de um Stateful,
+sempre teremos que acionar o Build(). Ou seja se navegarmos até o formulário e
+voltarmos a transferência será exibida na tela, pois o buld() foi executado no-
+vamente.
+
+- Sendo assim, existe uma função específica para isso, chamada "setState()" que
+possui um callback no qual poderemos colocar tudo o que queremos executar. Após
+essa execução, o build() será chamado.
+
+- 
+
+
+
+

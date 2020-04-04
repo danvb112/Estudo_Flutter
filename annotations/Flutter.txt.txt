@@ -211,7 +211,35 @@ vamente.
 possui um callback no qual poderemos colocar tudo o que queremos executar. Após
 essa execução, o build() será chamado.
 
+- O MaterialApp() nos disponibiliza um tributo próprio, chamado 'theme' que nos
+permite ajustar os temas a partir de uma referência 'ThemeData'. Esse Objeto
+possui constantes com temas já configurados, como 'ThemeData.dark()', que nos
+apresenta um aspecto de dark mode muito comum em aplicativos.
+
+-  Outra possibilidade é criarmos uma instância e preenchê-la manualmente com 
+suas diversas prorpriedades, como é o caso de 'primaryColor', que determina a 
+cor primária. Para isso uma ferramenta da página do Materia Design chamada color
+tool bai ajudar bastante.
+
+- No Flutter conseguiremos acessar essas cores por meio da referência 'Colors'
+e de uma constante especpifica para aquela cor, como 'green'. Em seguida, 
+passaremos, entre colchetes, o 'peso', por exemplo '900'.
+
+- Para alterar a cor do FloatingActionButton, usaremos a propriedade 
+'accentColor'. Seguindo a mesma lógica que a da cor primária, passaremos a re-
+ferência Colors seguida da constante blueAccent(nome da cor em inglês + Accent)
+e, entre colchetesm o peso da cor selecionada.
+
+- Para o botão, precisaremos incluir um atributo 'buttonTheme', destinado ao 
+tema do botão. Também exite o atributo 'buttonColor', mas este não envolve a 
+cor do texto. O buttonTheme recebe uma referência 'ButtonThemeData()' na qual
+poderemos passar uma propriedade 'buttonColor', no nosso caso recebendo o mesmo
+valor de accentColor. Também recebe a propriedade textTheme recebendo a referên-
+cia 'ButtonTextTheme' e a constante 'primary', indicandp que a cor do texto 
+será baseada na informação 'ThemeData.primaryColor'.
+
 - 
+
 
 
 

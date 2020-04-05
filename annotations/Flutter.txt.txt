@@ -238,7 +238,14 @@ valor de accentColor. Também recebe a propriedade textTheme recebendo a referê
 cia 'ButtonTextTheme' e a constante 'primary', indicandp que a cor do texto 
 será baseada na informação 'ThemeData.primaryColor'.
 
-- 
+- Na hora de refatorar o código é interessante separá-los em arquivos e em três
+pastas principais, sendo elas 
+
+Models - clocar código para modelos
+Screens - Widgets que representam uma tela inteira
+Components - Widgets que representam componentes menores e reutilizáveis.
+
+
 
 
 
